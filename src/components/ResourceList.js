@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useResources from './useResources';
+
+
 
 const ResourceList = ({ resource }) => {
 
-  const [resources, setResources] = useState([]);
+  const resources = useResources(resource);
 
-  const fetchResource = async (resource) => {
-    const response = await axios.get(`http://jsonplaceholder.typicode.com/${resource}`);
-    setResources(response.data);
-  }
-
-  useEffect(() => {
-    fetchResource(resource)
-  }, [resource])
 
   return (
-    <div>
-      {resources.length}
+    <div className="ui bulleted list">
+      {resources.map(record => {
+        return (<div key={record.id} className="item">{record.title}</div>)
+      })}
     </div>
   )
 }

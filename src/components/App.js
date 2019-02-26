@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ResourceList from './ResourceList';
+import UserList from './UserList';
 
 const App = () => {
   //Array Destructuring.
@@ -7,6 +8,7 @@ const App = () => {
 
   return (
     <div>
+      <UserList />
       <div>
         <button onClick={() => setResource('posts')} className="ui button primary">Posts</button>
         <button onClick={() => setResource('todos')} className="ui button primary">Todos</button>
